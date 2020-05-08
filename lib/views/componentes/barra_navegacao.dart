@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+
+class BarraNavegacao extends StatelessWidget {
+
+  final bool barraAdministrativa;
+
+  BarraNavegacao(this.barraAdministrativa);
+
+  @override
+  Widget build(BuildContext context){
+    const iconsColor = Colors.black;
+    List<BottomNavigationBarItem> listaBotoes = <BottomNavigationBarItem> [
+      BottomNavigationBarItem(
+        title: Text(''),
+        icon: IconButton(
+          icon: Icon(Icons.trending_up),
+          onPressed: (){},
+          color: iconsColor,
+        )
+      ),
+      BottomNavigationBarItem(
+        title: Text(''),
+        icon: IconButton(
+          icon: Icon(Icons.add_circle),
+          onPressed: (){},
+          color: iconsColor,
+        )
+      ),
+      BottomNavigationBarItem(
+        title: Text(''),
+        icon: IconButton(
+          icon: Icon(Icons.place),
+          onPressed: (){},
+          color: iconsColor,
+        ),
+      ),
+      BottomNavigationBarItem(
+        title: Text(''),
+        icon: IconButton(
+          icon: Icon(Icons.person),
+          onPressed: (){},
+          color: iconsColor,
+        ),
+      )
+    ];
+
+    if(this.barraAdministrativa){
+      listaBotoes.insert(0,
+        BottomNavigationBarItem(
+          title: Text(''),
+          icon: IconButton(
+          icon: Icon(Icons.format_list_bulleted),
+          onPressed: (){},
+          color: iconsColor,
+        )
+        )
+      );
+    }
+
+    return BottomNavigationBar(
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      type: BottomNavigationBarType.fixed,
+      items: listaBotoes
+    );
+  }
+}
