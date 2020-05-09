@@ -24,10 +24,64 @@ class _RadioAlcanceState extends State<RadioAlcance> {
 
   @override
   Widget build(BuildContext context){
-    return Row(
-      children: <Widget>[
-
-      ],
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Radio(
+                value: this.alcances[0],
+                groupValue: this.valorAtual,
+                onChanged: (String valor) {
+                  setState((){
+                    this.valorAtual = valor;
+                  });
+                },
+              ),
+              Text(
+                this.alcances[0]
+              )
+            ]
+          ),
+          Row(
+            children: <Widget>[
+              Radio(
+                value: this.alcances[1],
+                groupValue: this.valorAtual,
+                onChanged: (String valor) {
+                  setState((){
+                    this.valorAtual = valor;
+                  });
+                },
+              ),
+              Text(
+                this.alcances[1]
+              )
+            ]
+          ),
+          Row(
+            children: <Widget>[
+              Radio(
+                value: this.alcances[2],
+                groupValue: this.valorAtual,
+                onChanged: (String valor) {
+                  setState((){
+                    this.valorAtual = valor;
+                  });
+                },
+              ),
+              Text(
+                this.alcances[2]
+              )
+            ]
+          ),
+        ],
+      ),
+      margin: EdgeInsets.only(
+        bottom: 35,
+        top: 45,
+      ),
     );
   }
 }
