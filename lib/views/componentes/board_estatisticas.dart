@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../models/dados_estatisticos.dart';
 
 class BoardEstatisticas extends StatelessWidget {
+
+  final DadosEstatisticos dadosEstatisticos;
+
+  BoardEstatisticas(this.dadosEstatisticos);
 
   @override
   Widget build(BuildContext context){
@@ -13,7 +18,7 @@ class BoardEstatisticas extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(
-                  "50",
+                  this.dadosEstatisticos.confirmados.toString(),
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.orange,
@@ -27,21 +32,21 @@ class BoardEstatisticas extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(
-                  "28",
+                  this.dadosEstatisticos.suspeitos.toString(),
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.yellow
                   ),
                 ),
                 Text(
-                  "Descartados"
+                  "Suspeitos"
                 )
               ]
             ),
             Column(
               children: <Widget>[
                 Text(
-                  "14",
+                  this.dadosEstatisticos.descartados.toString(),
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.blue
@@ -60,28 +65,28 @@ class BoardEstatisticas extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(
-                  "50",
+                  this.dadosEstatisticos.curados.toString(),
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.green,
                   ),
                 ),
                 Text(
-                  "Confirmados"
+                  "Curados"
                 )
               ],
             ),
             Column(
               children: <Widget>[
                 Text(
-                  "50",
+                  this.dadosEstatisticos.obitos.toString(),
                   style: TextStyle(
                     fontSize: fontSize,
                     color: Colors.red,
                   ),
                 ),
                 Text(
-                  "Confirmados"
+                  "Óbitos"
                 )
               ],
             ),
