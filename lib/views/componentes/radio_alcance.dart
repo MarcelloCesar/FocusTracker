@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class RadioAlcance extends StatefulWidget {
 
-  RadioAlcance({Key key}) : super(key: key);
+  RadioAlcance({Key key, @required this.aoSelecionarRegiao}) : super(key: key);
+
+  final ValueChanged<String> aoSelecionarRegiao;
 
   @override
   _RadioAlcanceState createState() => _RadioAlcanceState();
@@ -13,7 +15,7 @@ class _RadioAlcanceState extends State<RadioAlcance> {
   final List<String> alcances = <String>[
     "Bairro",
     "Cidade",
-    "Pais"
+    "País"
   ];
 
   String valorAtual;
@@ -33,11 +35,7 @@ class _RadioAlcanceState extends State<RadioAlcance> {
               Radio(
                 value: this.alcances[0],
                 groupValue: this.valorAtual,
-                onChanged: (String valor) {
-                  setState((){
-                    this.valorAtual = valor;
-                  });
-                },
+                onChanged: this.alteraRegiaoHandler,
               ),
               Text(
                 this.alcances[0]
@@ -49,11 +47,7 @@ class _RadioAlcanceState extends State<RadioAlcance> {
               Radio(
                 value: this.alcances[1],
                 groupValue: this.valorAtual,
-                onChanged: (String valor) {
-                  setState((){
-                    this.valorAtual = valor;
-                  });
-                },
+                onChanged: this.alteraRegiaoHandler,
               ),
               Text(
                 this.alcances[1]
@@ -65,11 +59,7 @@ class _RadioAlcanceState extends State<RadioAlcance> {
               Radio(
                 value: this.alcances[2],
                 groupValue: this.valorAtual,
-                onChanged: (String valor) {
-                  setState((){
-                    this.valorAtual = valor;
-                  });
-                },
+                onChanged: this.alteraRegiaoHandler,
               ),
               Text(
                 this.alcances[2]
@@ -83,5 +73,13 @@ class _RadioAlcanceState extends State<RadioAlcance> {
         top: 45,
       ),
     );
+  }
+
+  void alteraRegiaoHandler(String valor) {
+    setState(() {
+      this.valorAtual = valor;
+    });
+
+    widget.aoSelecionarRegiao(this.valorAtual);
   }
 }

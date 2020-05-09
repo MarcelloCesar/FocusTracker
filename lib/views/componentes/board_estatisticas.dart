@@ -10,89 +10,92 @@ class BoardEstatisticas extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     final double fontSize = 65;
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Text(
-                  this.dadosEstatisticos.confirmados.toString(),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    color: Colors.orange,
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    this.dadosEstatisticos.confirmados.toString(),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: Colors.orange,
+                    ),
                   ),
-                ),
-                Text(
-                  "Confirmados"
-                )
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Text(
-                  this.dadosEstatisticos.suspeitos.toString(),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    color: Colors.yellow
+                  Text(
+                    "Confirmados"
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    this.dadosEstatisticos.suspeitos.toString(),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: Colors.yellow
+                    ),
                   ),
-                ),
-                Text(
-                  "Suspeitos"
-                )
-              ]
-            ),
-            Column(
-              children: <Widget>[
-                Text(
-                  this.dadosEstatisticos.descartados.toString(),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    color: Colors.blue
+                  Text(
+                    "Suspeitos"
+                  )
+                ]
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    this.dadosEstatisticos.descartados.toString(),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: Colors.blue
+                    ),
                   ),
-                ),
-                Text(
-                  "Descartados"
-                )
-              ]
-            )
-         ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Text(
-                  this.dadosEstatisticos.curados.toString(),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    color: Colors.green,
-                  ),
-                ),
-                Text(
-                  "Curados"
-                )
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Text(
-                  this.dadosEstatisticos.obitos.toString(),
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    color: Colors.red,
-                  ),
-                ),
-                Text(
-                  "Óbitos"
-                )
-              ],
-            ),
+                  Text(
+                    "Descartados"
+                  )
+                ]
+              )
           ],
-        )
-      ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    this.dadosEstatisticos.curados.toString(),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: Colors.green,
+                    ),
+                  ),
+                  Text(
+                    "Curados"
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    this.dadosEstatisticos.obitos.toString(),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Text(
+                    "Óbitos"
+                  )
+                ],
+              ),
+            ],
+          )
+        ],
+      )
     );
   }
 }

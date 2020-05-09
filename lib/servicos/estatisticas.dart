@@ -6,8 +6,8 @@ import 'dart:async';
 import 'dart:convert';
 
 
-Future<DadosEstatisticos> fetchDadosEstatisticos() async {
-  final response = await http.get(Constantes.URL_API + 'estatistica');
+Future<DadosEstatisticos> fetchDadosEstatisticos(int doenca, int regiao) async {
+  final response = await http.get(Constantes.URL_API + 'estatistica?doenca=' + doenca.toString() + "&regiao=" + regiao.toString());
 
   if(response.statusCode == 200){
     return DadosEstatisticos.fromJson(json.decode(response.body));

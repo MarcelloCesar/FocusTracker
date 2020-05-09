@@ -15,11 +15,16 @@ class TelaEstatisticas extends StatefulWidget {
 }
 class _TelaEstatisticas extends State<TelaEstatisticas> {
   Future<DadosEstatisticos> dados;
+  int doenca;
+  int regiao;
 
   @override
   void initState() {
     super.initState();
-    this.dados = fetchDadosEstatisticos();
+    this.doenca = 1;
+    this.regiao = 1;
+
+    this.dados = fetchDadosEstatisticos(this.doenca, this.regiao);
   }
 
   @override
@@ -31,8 +36,8 @@ class _TelaEstatisticas extends State<TelaEstatisticas> {
           child: Column(
             children: <Widget>[
               TituloTela("Estatísticas"),
-              SelectDoencas(),
-              RadioAlcance(),
+              SelectDoencas(aoSelecionarDoenca: this._atualizaDadosEstatisticosDoenca),
+              RadioAlcance(aoSelecionarRegiao: this._atualizaDadosEstatisticosRegiao),
               FutureBuilder<DadosEstatisticos> (
                 future: this.dados,
                 builder: (context, snapshot) {
@@ -51,5 +56,47 @@ class _TelaEstatisticas extends State<TelaEstatisticas> {
         bottomNavigationBar: BarraNavegacao(true)
       )
     );
+  }
+
+  void _atualizaDadosEstatisticosRegiao(String regiaoSelecionada) {
+    setState(() {
+      switch(regiaoSelecionada){
+        case 'Bairro':
+          this.regiao = 1;
+          break;
+
+        case 'Cidade':
+          this.regiao = 2;
+          break;
+
+        case 'País':
+          this.regiao = 3;
+          break;
+
+      }
+
+      this.dados = fetchDadosEstatisticos(this.doenca, this.regiao);
+    });
+  }
+
+  void _atualizaDadosEstatisticosDoenca(String doencaSelecionada) {
+    setState(() {
+      switch(doencaSelecionada){
+        case 'Corona Vírus':
+          this.doenca = 1;
+          break;
+
+        case 'Dengue':
+          this.doenca = 2;
+          break;
+
+        case 'Zika':
+          this.doenca = 3;
+          break;
+
+      }
+
+      this.dados = fetchDadosEstatisticos(this.doenca, this.regiao);
+    });
   }
 }

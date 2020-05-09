@@ -4,7 +4,9 @@ import '../../models/doenca.dart';
 
 class SelectDoencas extends StatefulWidget{
 
-  SelectDoencas({Key key}) : super(key: key);
+  SelectDoencas({Key key, @required this.aoSelecionarDoenca}) : super(key: key);
+
+  final ValueChanged<String> aoSelecionarDoenca;
 
   @override
   _SelectDoencasState createState() => _SelectDoencasState();
@@ -27,7 +29,7 @@ class _SelectDoencasState extends State<SelectDoencas> {
     )
   ];
 
-  String valorSelecionado = "Zika";
+  String valorSelecionado = "Corona Vírus";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,6 +59,8 @@ class _SelectDoencasState extends State<SelectDoencas> {
           setState(() {
             valorSelecionado = novoValor;
           });
+
+          widget.aoSelecionarDoenca(novoValor);
         },
         items: listaDoencas.map<DropdownMenuItem<String>>((Doenca doenca) {
           return DropdownMenuItem<String>(
