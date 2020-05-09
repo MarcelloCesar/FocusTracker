@@ -1,0 +1,8 @@
+version: '3'
+services:
+    android:
+        build: .
+        command: flutter packages upgrade & flutter build apk
+
+        volumes:
+            - .:/tmp/focustracker
