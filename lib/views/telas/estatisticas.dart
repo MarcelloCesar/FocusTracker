@@ -29,32 +29,29 @@ class _TelaEstatisticas extends State<TelaEstatisticas> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Estatísticas',
-      home: Scaffold(
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              TituloTela("Estatísticas"),
-              SelectDoencas(aoSelecionarDoenca: this._atualizaDadosEstatisticosDoenca),
-              RadioAlcance(aoSelecionarRegiao: this._atualizaDadosEstatisticosRegiao),
-              FutureBuilder<DadosEstatisticos> (
-                future: this.dados,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return BoardEstatisticas(snapshot.data);
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-
-                  return CircularProgressIndicator();
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            TituloTela("Estatísticas"),
+            SelectDoencas(aoSelecionarDoenca: this._atualizaDadosEstatisticosDoenca),
+            RadioAlcance(aoSelecionarRegiao: this._atualizaDadosEstatisticosRegiao),
+            FutureBuilder<DadosEstatisticos> (
+              future: this.dados,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return BoardEstatisticas(snapshot.data);
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
                 }
-              )
-            ],
-          ),
+
+                return CircularProgressIndicator();
+              }
+            )
+          ],
         ),
-        bottomNavigationBar: BarraNavegacao(true)
-      )
+      ),
+      bottomNavigationBar: BarraNavegacao(true)
     );
   }
 

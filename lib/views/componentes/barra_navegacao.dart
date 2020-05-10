@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:focustracker/views/telas/login.dart';
 
 class BarraNavegacao extends StatelessWidget {
 
@@ -14,7 +15,7 @@ class BarraNavegacao extends StatelessWidget {
         title: Text(''),
         icon: IconButton(
           icon: Icon(Icons.trending_up),
-          onPressed: (){},
+          onPressed: () => Navigator.pushReplacementNamed(context, '/estatisticas'),
           color: iconsColor,
         )
       ),
@@ -22,7 +23,7 @@ class BarraNavegacao extends StatelessWidget {
         title: Text(''),
         icon: IconButton(
           icon: Icon(Icons.add_circle),
-          onPressed: (){},
+          onPressed: () => Navigator.pushReplacementNamed(context, '/denuncia'),
           color: iconsColor,
         )
       ),
@@ -30,7 +31,7 @@ class BarraNavegacao extends StatelessWidget {
         title: Text(''),
         icon: IconButton(
           icon: Icon(Icons.place),
-          onPressed: (){},
+          onPressed: () => Navigator.pushReplacementNamed(context, '/mapa'),
           color: iconsColor,
         ),
       ),
@@ -38,7 +39,7 @@ class BarraNavegacao extends StatelessWidget {
         title: Text(''),
         icon: IconButton(
           icon: Icon(Icons.person),
-          onPressed: (){},
+          onPressed: () => Navigator.pushReplacementNamed(context, '/conta'),
           color: iconsColor,
         ),
       )
@@ -50,7 +51,7 @@ class BarraNavegacao extends StatelessWidget {
           title: Text(''),
           icon: IconButton(
           icon: Icon(Icons.format_list_bulleted),
-          onPressed: (){},
+          onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
           color: iconsColor,
         )
         )
