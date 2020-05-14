@@ -1,6 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:focustracker/config/constantes.dart';
+import 'package:focustracker/models/login.dart';
+import 'package:focustracker/servicos/login.dart';
 
 class TelaLogin extends StatefulWidget {
   TelaLogin({Key key}) : super(key: key);
@@ -14,6 +16,8 @@ class _TelaLogin extends State<TelaLogin> {
   TextEditingController _inputLogin = TextEditingController();
   TextEditingController _inputSenha = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<Login> retornoLogin;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +129,7 @@ class _TelaLogin extends State<TelaLogin> {
     return null;
   }
 
-  void _realizaLogin(BuildContext context) {
+  void _realizaLogin(BuildContext context) async {
     String login = _inputLogin.text;
     String senha = _inputSenha.text;
 
@@ -152,13 +156,18 @@ class _TelaLogin extends State<TelaLogin> {
       return;
     }
 
-    /**
-     *
-     * Implementar login da api
-     *
-     */
+    var retorno = await fetchLogin(login, senha);
 
-    Navigator.pushReplacementNamed(context, '/estatisticas');
+
+     /****
+      * implemenar resto do login
+      */
+    if(retorno == null){
+
+    } else {
+
+      Navigator.pushReplacementNamed(context, '/estatisticas');
+    }
   }
 }
 
