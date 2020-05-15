@@ -5,7 +5,8 @@ import 'package:flutter/cupertino.dart';
 class TituloTela extends StatelessWidget{
 
   final String titulo;
-  TituloTela(this.titulo);
+  final TextStyle estilo;
+  TituloTela({this.titulo, this.estilo});
 
   @override
   Widget build(BuildContext context){
@@ -13,9 +14,7 @@ class TituloTela extends StatelessWidget{
       child: Center(
         child: Text(
             this.titulo,
-            style: TextStyle(
-              fontSize: 35
-            ),
+            style: this.estilo
           ),
       ),
       margin: EdgeInsets.only(

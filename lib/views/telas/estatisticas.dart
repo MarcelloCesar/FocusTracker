@@ -33,7 +33,7 @@ class _TelaEstatisticas extends State<TelaEstatisticas> {
       body: Container(
         child: Column(
           children: <Widget>[
-            TituloTela("Estatísticas"),
+            TituloTela(titulo: "Estatísticas", estilo: TextStyle(fontSize: 35)),
             SelectDoencas(aoSelecionarDoenca: this._atualizaDadosEstatisticosDoenca),
             RadioAlcance(aoSelecionarRegiao: this._atualizaDadosEstatisticosRegiao),
             FutureBuilder<DadosEstatisticos> (

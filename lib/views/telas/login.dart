@@ -97,7 +97,7 @@ class _TelaLogin extends State<TelaLogin> {
         FlatButton(
           color: Colors.white,
           onPressed: () {
-
+            Navigator.pushReplacementNamed(context, '/cadastro');
           },
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Color(Constantes.DARK_BLUE)),

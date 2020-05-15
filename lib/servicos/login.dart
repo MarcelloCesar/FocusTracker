@@ -20,3 +20,22 @@ Future<Login> fetchLogin(String email, String senha) async {
 
   return Login();
 }
+
+Future<Login> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {
+  final response = await http.post(
+    Constantes.URL_API + Constantes.ENDPOINT_CADASTRO,
+    body: jsonEncode(<String, String> {
+      'nome'   : nome,
+      'email'  : email,
+      'senha'  : senha,
+      'dtNasc' : dtNasc,
+      'cep'    : cep,
+    })
+  );
+
+  if(response.statusCode == 200){
+    return Login.fromJson(json.decode(response.body));
+  }
+
+  return Login();
+}
