@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:focustracker/views/telas/cadastro.dart';
 import 'package:focustracker/views/telas/login.dart';
+import 'package:focustracker/views/telas/perfil.dart';
 import './views/telas/estatisticas.dart';
 
 void main() => runApp(FocusTracker());
@@ -22,7 +23,8 @@ class _FocusTracker extends State<FocusTracker> {
         '/': (context) => TelaLogin(),
         '/estatisticas' : (context) => TelaEstatisticas(),
         '/login': (context) => TelaLogin(),
-        '/cadastro': (context) => TelaCadastro()
+        '/cadastro': (context) => TelaCadastro(),
+        '/conta' : (context) => TelaPerfil()
       }
     );
   }

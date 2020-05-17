@@ -1,17 +1,17 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:focustracker/config/constantes.dart';
-import 'package:focustracker/servicos/login.dart';
+import 'package:focustracker/servicos/perfil.dart';
 import 'package:focustracker/views/componentes/titulo_tela.dart';
 
-class TelaCadastro extends StatefulWidget {
-  TelaCadastro({Key key}) : super(key: key);
+class TelaPerfil extends StatefulWidget {
+  TelaPerfil({Key key}) : super(key: key);
 
   @override
-  _TelaCadastro createState() => _TelaCadastro();
+  _TelaPerfil createState() => _TelaPerfil();
 }
 
-class _TelaCadastro extends State<TelaCadastro> {
+class _TelaPerfil extends State<TelaPerfil> {
 
   TextEditingController _inputNome     = TextEditingController();
   TextEditingController _inputEmail    = TextEditingController();
@@ -19,7 +19,7 @@ class _TelaCadastro extends State<TelaCadastro> {
   TextEditingController _inputSenha2   = TextEditingController();
   TextEditingController _inputDtNasc   = TextEditingController();
   TextEditingController _inputCEP      = TextEditingController();
-  TextEditingController _inputEndereco = TextEditingController();
+  TextEditingController _inputDias     = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -28,21 +28,21 @@ class _TelaCadastro extends State<TelaCadastro> {
       body: Column(
         children: <Widget>[
           TituloTela(
-            titulo: "FocusTracker",
-            estilo: TextStyle(
-              fontSize: 40,
-              letterSpacing: 9,
-              fontWeight: FontWeight.bold,
-              color: Color(Constantes.DARK_BLUE)
-            )
+              titulo: "FocusTracker",
+              estilo: TextStyle(
+                  fontSize: 40,
+                  letterSpacing: 9,
+                  fontWeight: FontWeight.bold,
+                  color: Color(Constantes.DARK_BLUE)
+              )
           ),
-          _formCadastro(),
+          _formPerfil(),
         ],
       ),
     );
   }
 
-  Widget _formCadastro() {
+  Widget _formPerfil() {
     return Form(
       key: _formKey,
 
@@ -55,14 +55,14 @@ class _TelaCadastro extends State<TelaCadastro> {
             TextFormField(
               controller: _inputNome,
               decoration: InputDecoration(
-                labelText: "Nome Completo"
+                  labelText: "Nome Completo"
               ),
               validator: _validadorNome,
             ),
             TextFormField(
               controller: _inputEmail,
               decoration: InputDecoration(
-                labelText: "Email"
+                  labelText: "Email"
               ),
               validator: _validadorEmail,
             ),
@@ -70,7 +70,7 @@ class _TelaCadastro extends State<TelaCadastro> {
               controller: _inputSenha,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Senha"
+                  labelText: "Senha"
               ),
               validator: _validadorSenha,
             ),
@@ -78,34 +78,40 @@ class _TelaCadastro extends State<TelaCadastro> {
               controller: _inputSenha2,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Confirmação de senha"
+                  labelText: "Confirmação de senha"
               ),
               validator: _validadorConfirmacaoSenha,
             ),
             TextFormField(
               controller: _inputDtNasc,
               decoration: InputDecoration(
-                labelText: "Data de nascimento (DD/MM/AAAA)"
+                  labelText: "Data de nascimento (DD/MM/AAAA)"
               ),
               validator: _validadorDtNasc,
             ),
             TextFormField(
               controller: _inputCEP,
               decoration: InputDecoration(
-                labelText: "CEP"
+                  labelText: "CEP"
               ),
               validator: _validadorCEP,
+            ),
+            TextField(
+              controller: _inputDias,
+              decoration: InputDecoration(
+                labelText: "Dias para exibição dos dados"
+              ),
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
               child: FlatButton(
                 color: Color(Constantes.DARK_BLUE),
-                onPressed: () => _realizaCadastro(context),
+                onPressed: () => _alteraPerfil(context),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                 child: Text(
-                  "Cadastrar",
+                  "Alterar",
                   style: TextStyle(
-                    color: Colors.white
+                      color: Colors.white
                   ),
                 ),
               ),
@@ -131,9 +137,10 @@ class _TelaCadastro extends State<TelaCadastro> {
   }
 
   String _validadorSenha(String senha){
-    if(senha.length > 8 || senha.length < 4) {
-      return "Insira uma senha que contenha entre 4 e 8 caracteres";
-    }
+    if(senha.length == 0) {
+      if (senha.length > 8 || senha.length < 4) {
+        return "Insira uma senha que contenha entre 4 e 8 caracteres";
+      }
 
     return null;
   }
@@ -161,11 +168,10 @@ class _TelaCadastro extends State<TelaCadastro> {
     return null;
   }
 
-  void _realizaCadastro(BuildContext context) async {
+  void _alteraPerfil(BuildContext context) async {
     if(!_formKey.currentState.validate()){
       return;
     }
-
-    var cadastro = await fetchCadastro(_inputNome.text, _inputEmail.text, _inputNome.text, _inputDtNasc.text, _inputCEP.text);
+    var status = await atualizaPerfil(_inputNome.text, _inputEmail.text, _inputSenha.text, _inputDtNasc.text, _inputCEP.text, 'token_teste');
   }
 }
