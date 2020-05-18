@@ -96,11 +96,12 @@ class _TelaPerfil extends State<TelaPerfil> {
               ),
               validator: _validadorCEP,
             ),
-            TextField(
+            TextFormField(
               controller: _inputDias,
               decoration: InputDecoration(
                 labelText: "Dias para exibição dos dados"
               ),
+              validator: _validadorDias,
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
@@ -141,6 +142,7 @@ class _TelaPerfil extends State<TelaPerfil> {
       if (senha.length > 8 || senha.length < 4) {
         return "Insira uma senha que contenha entre 4 e 8 caracteres";
       }
+      }
 
     return null;
   }
@@ -165,6 +167,13 @@ class _TelaPerfil extends State<TelaPerfil> {
       return "CEP inválido";
     }
 
+    return null;
+  }
+
+  String _validadorDias(String data) {
+    if (!data.contains(new RegExp(r'[^0-9]'), 1)) {
+      return "Contém caracteres inválidos";
+    }
     return null;
   }
 
