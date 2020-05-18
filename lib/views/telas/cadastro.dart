@@ -92,7 +92,7 @@ class _TelaCadastro extends State<TelaCadastro> {
             TextFormField(
               controller: _inputCEP,
               decoration: InputDecoration(
-                labelText: "CEP"
+                labelText: "CEP (Somente números)"
               ),
               validator: _validadorCEP,
             ),
@@ -153,15 +153,13 @@ class _TelaCadastro extends State<TelaCadastro> {
   }
 
   String _validadorCEP(String data) {
-    return null;
-    if(!data.contains(new RegExp(r'[0-9]{5}\-[0-9]{3}'), 1)){
+    if ((data.length != 8) || (data.contains(new RegExp(r'[^0-9]'), 1))) {
       return "CEP inválido";
     }
-
     return null;
   }
 
-  void _realizaCadastro(BuildContext context) async {
+    void _realizaCadastro(BuildContext context) async {
     if(!_formKey.currentState.validate()){
       return;
     }

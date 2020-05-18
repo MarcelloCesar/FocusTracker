@@ -92,7 +92,7 @@ class _TelaPerfil extends State<TelaPerfil> {
             TextFormField(
               controller: _inputCEP,
               decoration: InputDecoration(
-                  labelText: "CEP"
+                  labelText: "CEP (Somente números)"
               ),
               validator: _validadorCEP,
             ),
@@ -162,16 +162,15 @@ class _TelaPerfil extends State<TelaPerfil> {
   }
 
   String _validadorCEP(String data) {
-    return null;
-    if(!data.contains(new RegExp(r'[0-9]{5}\-[0-9]{3}'), 1)){
-      return "CEP inválido";
-    }
-
+    if ((data.length != 8) || (data.contains(new RegExp(r'[^0-9]'), 1)))
+      {
+        return "CEP inválido";
+      }
     return null;
   }
 
   String _validadorDias(String data) {
-    if (!data.contains(new RegExp(r'[^0-9]'), 1)) {
+    if (data.contains(new RegExp(r'[^0-9]'), 1)) {
       return "Contém caracteres inválidos";
     }
     return null;
