@@ -38,7 +38,7 @@ class _TelaPerfil extends State<TelaPerfil> {
           ),
           _formPerfil(),
         ],
-      ),
+      )
     );
   }
 
