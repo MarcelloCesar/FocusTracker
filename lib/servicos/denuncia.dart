@@ -6,10 +6,11 @@ import 'dart:convert';
 Future<int> realizaDenuncia(String cep, String observacao, String coordenadas, String tipo, String token) async {
   String url = Constantes.URL_API + Constantes.ENDPOINT_DENUNCIA;
   final response = await http.post(url, body: jsonEncode(<String, String> {
-    'nome'   : coordenadas,
-    'tipo'   : tipo,
-    'cep'    : cep,
-    'token'  : token,
+    'coord'   : coordenadas,
+    'tipo'    : tipo,
+    'cep'     : cep,
+    'observ'  : observacao,
+    'token'   : token,
   })
   );
 
