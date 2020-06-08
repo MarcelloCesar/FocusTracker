@@ -27,7 +27,7 @@ class _TelaDenuncia extends State<TelaDenuncia> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(child: Container(
         child: Column(
           children: <Widget>[
             TituloTela(
@@ -35,11 +35,12 @@ class _TelaDenuncia extends State<TelaDenuncia> {
                 estilo: TextStyle(fontSize: 35)
             ),
             _formDenuncia(context),
-            _botoesDenuncia(context)
+            _botoesDenuncia(context),
           ],
         ),
       ),
-      bottomNavigationBar: BarraNavegacao(true),
+      ),
+        bottomNavigationBar: BarraNavegacao(true),
     );
   }
 

@@ -25,7 +25,7 @@ class _TelaPerfil extends State<TelaPerfil> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(child: Column(
         children: <Widget>[
           TituloTela(
               titulo: "FocusTracker",
@@ -38,6 +38,7 @@ class _TelaPerfil extends State<TelaPerfil> {
           ),
           _formPerfil(),
         ],
+      ),
       )
     );
   }
