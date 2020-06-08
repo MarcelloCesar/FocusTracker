@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../componentes/radio_denuncias.dart';
 import '../componentes/barra_navegacao.dart';
 import 'package:focustracker/servicos/denuncia.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class TelaDenuncia extends StatefulWidget {
   TelaDenuncia({Key key}) : super(key: key);
@@ -17,6 +19,8 @@ class _TelaDenuncia extends State<TelaDenuncia> {
   TextEditingController _inputCoordenadas = TextEditingController();
   TextEditingController _inputObservacoes = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  File _image;
+  final picker = ImagePicker();
 
   @override
   void initState() {
@@ -74,7 +78,7 @@ class _TelaDenuncia extends State<TelaDenuncia> {
                 margin: EdgeInsets.only(top: 10),
                 child: FlatButton(
                   color: Colors.lightBlue,
-                  onPressed: () => enviaFoto(),
+                  onPressed: () => _showChoiceDialog(context),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
@@ -154,4 +158,48 @@ class _TelaDenuncia extends State<TelaDenuncia> {
     _inputCoordenadas.clear();
     _inputObservacoes.clear();
   }
+
+  Future <void> _showChoiceDialog(BuildContext context){
+    return showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Escolha uma opção"),
+        content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                    child: Text("Galeria"),
+                    onTap: (){
+                      pegarImagemGaleria(context);
+                    }
+                ),
+                Padding(padding: EdgeInsets.all(8.0)),
+                GestureDetector(
+                  child: Text("Câmera"),
+                  onTap: () {
+                    pegarImagemCamera(context);
+                  },
+                )
+              ],
+            )
+        ),
+      );
+    });
+  }
+
+  Future pegarImagemCamera(BuildContext context) async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
+
+  Future pegarImagemGaleria(BuildContext context) async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
+
 }

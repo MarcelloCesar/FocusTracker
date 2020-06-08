@@ -21,7 +21,7 @@ class _FocusTracker extends State<FocusTracker> {
     return MaterialApp(
       title: "FocusTracker",
       routes: {
-        '/': (context) => TelaLogin(),
+        '/': (context) => TelaDenuncia(),
         '/estatisticas' : (context) => TelaEstatisticas(),
         '/login': (context) => TelaLogin(),
         '/cadastro': (context) => TelaCadastro(),
