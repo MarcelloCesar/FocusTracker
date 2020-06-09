@@ -65,7 +65,7 @@ class _TelaCadastro extends State<TelaCadastro> {
               decoration: InputDecoration(
                 labelText: "Email"
               ),
-              validator: _validadorEmail,
+//              validator: _validadorEmail,
             ),
             TextFormField(
               controller: _inputSenha,
@@ -166,5 +166,6 @@ class _TelaCadastro extends State<TelaCadastro> {
     }
 
     var cadastro = await fetchCadastro(_inputNome.text, _inputEmail.text, _inputNome.text, _inputDtNasc.text, _inputCEP.text);
+    
   }
 }
