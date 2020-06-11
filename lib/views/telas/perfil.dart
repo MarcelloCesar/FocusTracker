@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:focustracker/config/constantes.dart';
 import 'package:focustracker/servicos/perfil.dart';
 import 'package:focustracker/views/componentes/titulo_tela.dart';
+import '../componentes/barra_navegacao.dart';
 
 class TelaPerfil extends StatefulWidget {
   TelaPerfil({Key key}) : super(key: key);
@@ -25,7 +26,7 @@ class _TelaPerfil extends State<TelaPerfil> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(child: Column(
         children: <Widget>[
           TituloTela(
               titulo: "FocusTracker",
@@ -39,6 +40,8 @@ class _TelaPerfil extends State<TelaPerfil> {
           _formPerfil(),
         ],
       ),
+      ),
+      bottomNavigationBar: BarraNavegacao(true),
     );
   }
 
