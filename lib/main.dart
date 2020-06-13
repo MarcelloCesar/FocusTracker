@@ -6,6 +6,7 @@ import 'package:focustracker/views/telas/denuncia.dart';
 import 'package:focustracker/views/telas/adm.dart';
 import './views/telas/estatisticas.dart';
 import 'package:focustracker/views/telas/listaDenuncia.dart';
+import 'package:focustracker/views/telas/manutencao_denuncia.dart';
 
 void main() => runApp(FocusTracker());
 
@@ -30,7 +31,7 @@ class _FocusTracker extends State<FocusTracker> {
         '/conta' : (context) => TelaPerfil(),
         '/denuncia': (context) => TelaDenuncia(),
         '/adm': (context) => TelaAdm(),
-        '/gerenciamento': (context) => TelaListagem()
+        '/gerenciamento': (context) => TelaManutencao()
       }
     );
   }

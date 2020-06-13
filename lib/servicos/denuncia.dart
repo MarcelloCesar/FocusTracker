@@ -19,7 +19,7 @@ Future<int> realizaDenuncia(String cep, String observacao, String coordenadas, S
 }
 
 Future<Denuncia> fetchDadosDenuncia(int id) async {
-  final response = await http.get(Constantes.URL_API + Constantes.ENDPOINT_ESTATISTICAS + '?id=' + id.toString());
+  final response = await http.get(Constantes.URL_API + Constantes.ENDPOINT_DENUNCIA + '?id=' + id.toString());
 
   if(response.statusCode == 200){
     return Denuncia.fromJson(json.decode(response.body));
