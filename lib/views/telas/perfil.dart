@@ -107,16 +107,14 @@ class _TelaPerfil extends State<TelaPerfil> {
               validator: _validadorDias,
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 30),
+              height: 50,
+              width: 1000,
               child: FlatButton(
                 color: Color(Constantes.DARK_BLUE),
                 onPressed: () => _alteraPerfil(context),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                child: Text(
-                  "Alterar",
-                  style: TextStyle(
-                      color: Colors.white
-                  ),
+                child: Text("Alterar", style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ),

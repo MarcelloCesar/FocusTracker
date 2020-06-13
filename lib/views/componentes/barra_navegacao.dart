@@ -51,7 +51,7 @@ class BarraNavegacao extends StatelessWidget {
           title: Text(''),
           icon: IconButton(
           icon: Icon(Icons.format_list_bulleted),
-          onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
+          onPressed: () => Navigator.pushReplacementNamed(context, '/adm'),
           color: iconsColor,
         )
         )
