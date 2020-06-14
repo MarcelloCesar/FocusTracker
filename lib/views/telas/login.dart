@@ -156,17 +156,12 @@ class _TelaLogin extends State<TelaLogin> {
       return;
     }
 
-    var retorno = await fetchLogin(login, senha);
+    bool retorno = await fetchLogin(login, senha);
 
-
-     /****
-      * implemenar resto do login
-      */
-    if(retorno == null){
-
-    } else {
-
+    if(retorno == true){
       Navigator.pushReplacementNamed(context, '/estatisticas');
+    }
+    else {
     }
   }
 }

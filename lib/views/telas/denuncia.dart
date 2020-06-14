@@ -151,6 +151,7 @@ class _TelaDenuncia extends State<TelaDenuncia> {
       return;
     }
     var status = await realizaDenuncia(_inputCEP.text, _inputObservacoes.text, _inputCoordenadas.text, this.tipo.toString(), 'token');
+    print(status);
   }
 
   void cancelaDenuncia(BuildContext context){

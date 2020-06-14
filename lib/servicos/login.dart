@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-Future<Login> fetchLogin(String email, String senha) async {
+Future<bool> fetchLogin(String email, String senha) async {
   final response = await http.post(
     Constantes.URL_API + Constantes.ENDPOINT_LOGIN,
     body: jsonEncode(<String, String> {
@@ -15,10 +15,11 @@ Future<Login> fetchLogin(String email, String senha) async {
 
 
   if(response.statusCode == 200){
-    return Login.fromJson(json.decode(response.body));
+    Map<String, dynamic> resp = jsonDecode(response.body);
+    return resp['status'];
   }
 
-  return Login();
+  return false;
 }
 
 Future<Login> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {

@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:focustracker/models/denuncia.dart';
 
-Future<int> realizaDenuncia(String cep, String observacao, String coordenadas, String tipo, String token) async {
+Future<bool> realizaDenuncia(String cep, String observacao, String coordenadas, String tipo, String token) async {
   String url = Constantes.URL_API + Constantes.ENDPOINT_DENUNCIA;
   final response = await http.post(url, body: jsonEncode(<String, String> {
     'coordenadas' : coordenadas,
@@ -15,7 +15,8 @@ Future<int> realizaDenuncia(String cep, String observacao, String coordenadas, S
   })
   );
 
-  return response.statusCode;
+  Map<String, dynamic> resp = jsonDecode(response.body);
+  return resp['status'];
 }
 
 Future<Denuncia> fetchDadosDenuncia(int id) async {
