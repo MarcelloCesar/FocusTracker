@@ -7,8 +7,7 @@ import 'package:focustracker/servicos/denuncia.dart';
 import '../componentes/board_denuncia.dart';
 
 class TelaManutencao extends StatefulWidget {
-  final int id;
-  TelaManutencao({Key key, @required this.id}) : super(key: key);
+  TelaManutencao({Key key}) : super(key: key);
 
   @override
   _TelaManutencao createState() => _TelaManutencao();
@@ -16,12 +15,14 @@ class TelaManutencao extends StatefulWidget {
 
 class _TelaManutencao extends State<TelaManutencao> {
   Future<Denuncia> dados;
+  int id;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    this.dados = fetchDadosDenuncia(widget.id);
+    this.id = 2;
+    this.dados = fetchDadosDenuncia(this.id);
   }
 
   @override
@@ -134,7 +135,8 @@ class _TelaManutencao extends State<TelaManutencao> {
     return;
   }
 
-  void alteraStatus(BuildContext context, String tipo){
-    return;
+  void alteraStatus(BuildContext context, String tipo) async {
+    bool resp = await alteraDenuncia(tipo, this.id);
+    print(resp);
   }
 }

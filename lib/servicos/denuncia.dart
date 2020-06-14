@@ -15,8 +15,10 @@ Future<bool> realizaDenuncia(String cep, String observacao, String coordenadas, 
   })
   );
 
-  Map<String, dynamic> resp = jsonDecode(response.body);
-  return resp['status'];
+  if(response.statusCode == 200) {
+    Map<String, dynamic> resp = jsonDecode(response.body);
+    return resp['status'];
+  }
 }
 
 Future<Denuncia> fetchDadosDenuncia(int id) async {
@@ -25,4 +27,19 @@ Future<Denuncia> fetchDadosDenuncia(int id) async {
   if(response.statusCode == 200){
     return Denuncia.fromJson(json.decode(response.body));
   }
+}
+
+Future<bool> alteraDenuncia(String tipo, int id) async {
+  String url = Constantes.URL_API + Constantes.ENDPOINT_GERENCIAMENTO;
+  final response = await http.post(url, body: jsonEncode(<String, String>{
+    'tipo' : tipo,
+    'id' : id.toString(),
+  })
+  );
+
+  if(response.statusCode == 200) {
+    Map<String, dynamic> resp = jsonDecode(response.body);
+    return resp['status'];
+  }
+  return false;
 }
