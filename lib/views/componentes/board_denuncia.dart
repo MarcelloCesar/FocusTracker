@@ -10,14 +10,12 @@ class BoardDenuncia extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Container(
-          child: Column(
+      width: MediaQuery.of(context).size.width / 1.05,
+      child: Column(
             children: <Widget>[
               Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Criadouro " + this.dadosDenuncia.id.toString(), style: TextStyle(fontSize: 18))),
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text("Localização da denúncia:", style: TextStyle(fontSize: 18))),
+                  child: Text("Denuncia " + this.dadosDenuncia.id.toString(), style: TextStyle(fontSize: 18))),
               Align(
                   alignment: Alignment.centerLeft,
                   child: Text("CEP: " + this.dadosDenuncia.cep, style: TextStyle(fontSize: 18))),
@@ -26,7 +24,7 @@ class BoardDenuncia extends StatelessWidget {
                   child: Text("Coordenadas: " + this.dadosDenuncia.coordenadas, style: TextStyle(fontSize: 18))),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Observações " + this.dadosDenuncia.id.toString(), style: TextStyle(fontSize: 18))),
+                  child: Text("Observações:", style: TextStyle(fontSize: 18))),
               Align(
                   alignment: Alignment.centerLeft,
                   child: Text(this.dadosDenuncia.observacao, style: TextStyle(fontSize: 18))),

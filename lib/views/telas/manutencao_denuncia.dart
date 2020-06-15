@@ -21,7 +21,7 @@ class _TelaManutencao extends State<TelaManutencao> {
   @override
   void initState() {
     super.initState();
-    this.id = 2;
+    this.id = 6;
     this.dados = fetchDadosDenuncia(this.id);
   }
 
@@ -91,10 +91,10 @@ class _TelaManutencao extends State<TelaManutencao> {
                 width: 150,
                 child: FlatButton(
                   color: Color(Constantes.DARK_BLUE),
-                  onPressed: () => alteraStatus(context, "cancela"),
+                  onPressed: () => alteraStatus(context, "descarta"),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
-                  child: Text("Cancelar", style: TextStyle(color: Colors.white, fontSize: 18)),
+                  child: Text("Descartar", style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               )
             ],
@@ -137,6 +137,5 @@ class _TelaManutencao extends State<TelaManutencao> {
 
   void alteraStatus(BuildContext context, String tipo) async {
     bool resp = await alteraDenuncia(tipo, this.id);
-    print(resp);
   }
 }

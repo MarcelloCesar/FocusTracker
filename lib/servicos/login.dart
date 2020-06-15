@@ -22,7 +22,7 @@ Future<bool> fetchLogin(String email, String senha) async {
   return false;
 }
 
-Future<Login> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {
+Future<bool> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {
   final response = await http.post(
     Constantes.URL_API + Constantes.ENDPOINT_CADASTRO,
     body: jsonEncode(<String, String> {
@@ -35,8 +35,9 @@ Future<Login> fetchCadastro(String nome, String email, String senha, String dtNa
   );
 
   if(response.statusCode == 200){
-    return Login.fromJson(json.decode(response.body));
+    Map<String, dynamic> resp = jsonDecode(response.body);
+    return resp['status'];
   }
 
-  return Login();
+  return false;
 }

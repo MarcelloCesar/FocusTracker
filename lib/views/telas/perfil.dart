@@ -139,7 +139,7 @@ class _TelaPerfil extends State<TelaPerfil> {
   }
 
   String _validadorSenha(String senha){
-    if(senha.length == 0) {
+    if(senha.length != 0) {
       if (senha.length > 8 || senha.length < 4) {
         return "Insira uma senha que contenha entre 4 e 8 caracteres";
       }
