@@ -4,40 +4,38 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-Future<bool> fetchLogin(String email, String senha) async {
+Future<Login> fetchLogin(String email, String senha) async {
   final response = await http.post(
-    Constantes.URL_API + Constantes.ENDPOINT_LOGIN,
-    body: jsonEncode(<String, String> {
-      'email': email,
-      'senha': senha,
-    })
+      Constantes.URL_API + Constantes.ENDPOINT_LOGIN,
+      body: jsonEncode(<String, String> {
+        'email': email,
+        'senha': senha,
+      })
   );
 
 
   if(response.statusCode == 200){
-    Map<String, dynamic> resp = jsonDecode(response.body);
-    return resp['status'];
+    return Login.fromJson(json.decode(response.body));
   }
 
-  return false;
+  return Login();
 }
 
-Future<bool> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {
+Future<Login> fetchCadastro(String nome, String email, String senha, String dtNasc, String cep) async {
   final response = await http.post(
-    Constantes.URL_API + Constantes.ENDPOINT_CADASTRO,
-    body: jsonEncode(<String, String> {
-      'nome'   : nome,
-      'email'  : email,
-      'senha'  : senha,
-      'dtNasc' : dtNasc,
-      'cep'    : cep,
-    })
+      Constantes.URL_API + Constantes.ENDPOINT_CADASTRO,
+      body: jsonEncode(<String, String> {
+        'nome'   : nome,
+        'email'  : email,
+        'senha'  : senha,
+        'dtNasc' : dtNasc,
+        'cep'    : cep,
+      })
   );
 
   if(response.statusCode == 200){
-    Map<String, dynamic> resp = jsonDecode(response.body);
-    return resp['status'];
+    return Login.fromJson(json.decode(response.body));
   }
 
-  return false;
+  return Login();
 }

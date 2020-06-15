@@ -27,6 +27,7 @@ Future<Denuncia> fetchDadosDenuncia(int id) async {
   if(response.statusCode == 200){
     return Denuncia.fromJson(json.decode(response.body));
   }
+  return Denuncia();
 }
 
 Future<bool> alteraDenuncia(String tipo, int id) async {
