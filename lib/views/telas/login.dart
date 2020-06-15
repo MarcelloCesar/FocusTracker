@@ -97,7 +97,7 @@ class _TelaLogin extends State<TelaLogin> {
         FlatButton(
           color: Colors.white,
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/cadastro');
+            Navigator.pushNamed(context, '/cadastro');
           },
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Color(Constantes.DARK_BLUE)),
@@ -156,10 +156,33 @@ class _TelaLogin extends State<TelaLogin> {
       return;
     }
 
-    bool retorno = await fetchLogin(login, senha);
 
-    if(retorno == true){
-      Navigator.pushReplacementNamed(context, '/estatisticas');
+    var retorno = await fetchLogin(login, senha);
+    if(retorno != null){
+      // Verifica se foi retornado o login
+      if(retorno.token != null) {
+        Constantes.tokenSessao = retorno.token;
+        // Navega até a tela correta
+        Navigator.pushReplacementNamed(context, '/estatisticas');
+      } else {
+        showDialog(
+          context: context,
+          builder: (context){
+            return AlertDialog(
+              title:Text("Erro"),
+              content: Text("Login não efetuado. Verifique suas credenciais."),
+              actions : <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }
+                )
+              ]
+            );
+          },
+        );
+      }
     }
     else {
     }

@@ -12,3 +12,25 @@ class Login{
     );
   }
 }
+
+class Usuario {
+  final String nome;
+  final String email;
+  final String dtNasc;
+  final String cep;
+  final int dias;
+  final String senha;
+
+  Usuario({this.nome, this.email, this.dtNasc, this.cep, this.dias, this.senha});
+
+  factory Usuario.fromJson(Map<String, dynamic> json) {
+    return Usuario(
+      nome: json['nome'],
+      email: json['email'],
+      dtNasc: json['dtnasc'],
+      cep: json['cep'],
+      dias: json['dias'],
+      senha: json['senha']
+    );
+  }
+}
