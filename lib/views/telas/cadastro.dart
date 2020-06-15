@@ -165,6 +165,7 @@ class _TelaCadastro extends State<TelaCadastro> {
       return;
     }
 
+
     var cadastro = await fetchCadastro(_inputNome.text, _inputEmail.text, _inputSenha.text, _inputDtNasc.text, _inputCEP.text);
     if(cadastro.token != null){
       Constantes.tokenSessao = cadastro.token;
