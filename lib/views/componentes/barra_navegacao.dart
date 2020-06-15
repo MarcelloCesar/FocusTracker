@@ -42,10 +42,11 @@ class BarraNavegacao extends StatelessWidget {
         BottomNavigationBarItem(
           title: Text(''),
           icon: IconButton(
-            icon: Icon(Icons.format_list_bulleted),
-            //onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
-            color: iconsColor,
-          )
+          icon: Icon(Icons.format_list_bulleted),
+          onPressed: () => Navigator.pushReplacementNamed(context, '/adm'),
+          color: iconsColor,
+        )
+
         )
       );
     }

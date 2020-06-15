@@ -108,16 +108,14 @@ class _TelaPerfil extends State<TelaPerfil> {
               validator: _validadorDias,
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 30),
+              height: 50,
+              width: 1000,
               child: FlatButton(
                 color: Color(Constantes.DARK_BLUE),
                 onPressed: () => _alteraPerfil(context),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                child: Text(
-                  "Alterar",
-                  style: TextStyle(
-                      color: Colors.white
-                  ),
+                child: Text("Alterar", style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ),
@@ -142,7 +140,7 @@ class _TelaPerfil extends State<TelaPerfil> {
   }
 
   String _validadorSenha(String senha){
-    if(senha.length == 0) {
+    if(senha.length != 0) {
       if (senha.length > 8 || senha.length < 4) {
         return "Insira uma senha que contenha entre 4 e 8 caracteres";
       }

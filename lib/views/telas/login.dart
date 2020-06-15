@@ -156,6 +156,7 @@ class _TelaLogin extends State<TelaLogin> {
       return;
     }
 
+
     var retorno = await fetchLogin(login, senha);
     if(retorno != null){
       // Verifica se foi retornado o login
@@ -182,6 +183,8 @@ class _TelaLogin extends State<TelaLogin> {
           },
         );
       }
+    }
+    else {
     }
   }
 }
