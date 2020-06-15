@@ -1,4 +1,5 @@
 import 'package:focustracker/config/constantes.dart';
+import 'package:focustracker/models/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -16,4 +17,15 @@ Future<int> atualizaPerfil(String nome, String email, String senha, String dtNas
   );
 
   return response.statusCode;
+}
+
+Future<Usuario> getPerfil(String token) async {
+  String url = Constantes.URL_API + Constantes.ENDPOINT_PERFIL;
+
+  final response = await http.get(url + '?token=' + token);
+  if(response.statusCode == 200){
+    return Usuario.fromJson(json.decode(response.body));
+  }
+
+  return Usuario();
 }

@@ -160,6 +160,7 @@ class _TelaLogin extends State<TelaLogin> {
     if(retorno != null){
       // Verifica se foi retornado o login
       if(retorno.token != null) {
+        Constantes.tokenSessao = retorno.token;
         // Navega até a tela correta
         Navigator.pushReplacementNamed(context, '/estatisticas');
       } else {

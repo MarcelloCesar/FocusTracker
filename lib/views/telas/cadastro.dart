@@ -93,7 +93,7 @@ class _TelaCadastro extends State<TelaCadastro> {
             TextFormField(
               controller: _inputCEP,
               decoration: InputDecoration(
-                labelText: "CEP (Somente números)"
+                labelText: "CEP"
               ),
               validator: _validadorCEP,
             ),
@@ -165,8 +165,9 @@ class _TelaCadastro extends State<TelaCadastro> {
       return;
     }
 
-    var cadastro = await fetchCadastro(_inputNome.text, _inputEmail.text, _inputNome.text, _inputDtNasc.text, _inputCEP.text);
+    var cadastro = await fetchCadastro(_inputNome.text, _inputEmail.text, _inputSenha.text, _inputDtNasc.text, _inputCEP.text);
     if(cadastro.token != null){
+      Constantes.tokenSessao = cadastro.token;
       Navigator.pop(context);
       Navigator.pushReplacementNamed(context, '/estatisticas');
     } else {

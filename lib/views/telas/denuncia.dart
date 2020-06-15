@@ -1,3 +1,4 @@
+import 'package:focustracker/config/constantes.dart';
 import 'package:focustracker/views/componentes/titulo_tela.dart';
 import 'package:flutter/material.dart';
 import '../componentes/radio_denuncias.dart';
@@ -145,12 +146,33 @@ class _TelaDenuncia extends State<TelaDenuncia> {
 
   void enviaFoto() {
   }
-  
+
   void incluiDenuncia(BuildContext context) async{
     if(!_formKey.currentState.validate()){
       return;
     }
-    var status = await realizaDenuncia(_inputCEP.text, _inputObservacoes.text, _inputCoordenadas.text, this.tipo.toString(), 'token');
+
+    var status = await realizaDenuncia(_inputCEP.text, _inputObservacoes.text, _inputCoordenadas.text, this.tipo.toString(), Constantes.tokenSessao);
+    showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          title:Text("Confirmação"),
+          content: Text("Denúncia incluída com sucesso."),
+          actions : <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+            )
+          ]
+        );
+      },
+    );
+
+    // limpa a tela para dar impressao
+    cancelaDenuncia(context);
   }
 
   void cancelaDenuncia(BuildContext context){

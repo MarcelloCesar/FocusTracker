@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:focustracker/config/constantes.dart';
 import 'package:focustracker/servicos/perfil.dart';
+import 'package:focustracker/views/componentes/barra_navegacao.dart';
 import 'package:focustracker/views/componentes/titulo_tela.dart';
 import '../componentes/barra_navegacao.dart';
 
@@ -179,10 +180,41 @@ class _TelaPerfil extends State<TelaPerfil> {
     return null;
   }
 
+  void _carregaPerfil() async {
+    var usuario = await getPerfil(Constantes.tokenSessao);
+
+    _inputNome.text = usuario.nome;
+    _inputEmail.text = usuario.email;
+    _inputDtNasc.text = usuario.dtNasc;
+    _inputSenha.text = usuario.senha;
+    _inputSenha2.text = usuario.senha;
+    _inputCEP.text = usuario.cep;
+    _inputDias.text = usuario.dias.toString();
+  }
+
   void _alteraPerfil(BuildContext context) async {
     if(!_formKey.currentState.validate()){
       return;
     }
-    var status = await atualizaPerfil(_inputNome.text, _inputEmail.text, _inputSenha.text, _inputDtNasc.text, _inputCEP.text, 'token_teste');
+
+    var status = await atualizaPerfil(_inputNome.text, _inputEmail.text, _inputSenha.text, _inputDtNasc.text, _inputCEP.text, Constantes.tokenSessao);
+
+    showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          title:Text("Confirmação"),
+          content: Text("Dados alterados com sucesso."),
+          actions : <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              }
+            )
+          ]
+        );
+      },
+    );
   }
 }

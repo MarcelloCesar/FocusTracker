@@ -8,4 +8,6 @@ class Constantes {
   static const ENDPOINT_PERFIL = "/perfil";
   static const ENDPOINT_DENUNCIA = "/denuncia";
   static const DARK_BLUE = 0xFF43425D;
+
+  static String tokenSessao="";
 }

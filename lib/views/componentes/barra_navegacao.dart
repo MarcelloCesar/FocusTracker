@@ -30,14 +30,6 @@ class BarraNavegacao extends StatelessWidget {
       BottomNavigationBarItem(
         title: Text(''),
         icon: IconButton(
-          icon: Icon(Icons.place),
-          onPressed: () => Navigator.pushReplacementNamed(context, '/mapa'),
-          color: iconsColor,
-        ),
-      ),
-      BottomNavigationBarItem(
-        title: Text(''),
-        icon: IconButton(
           icon: Icon(Icons.person),
           onPressed: () => Navigator.pushReplacementNamed(context, '/conta'),
           color: iconsColor,
@@ -50,10 +42,10 @@ class BarraNavegacao extends StatelessWidget {
         BottomNavigationBarItem(
           title: Text(''),
           icon: IconButton(
-          icon: Icon(Icons.format_list_bulleted),
-          onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
-          color: iconsColor,
-        )
+            icon: Icon(Icons.format_list_bulleted),
+            //onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
+            color: iconsColor,
+          )
         )
       );
     }
