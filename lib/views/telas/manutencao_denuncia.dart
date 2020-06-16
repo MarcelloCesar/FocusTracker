@@ -21,7 +21,7 @@ class _TelaManutencao extends State<TelaManutencao> {
   @override
   void initState() {
     super.initState();
-    this.id = 6;
+    this.id = 1;
     this.dados = fetchDadosDenuncia(this.id);
   }
 

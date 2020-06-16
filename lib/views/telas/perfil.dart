@@ -47,6 +47,7 @@ class _TelaPerfil extends State<TelaPerfil> {
   }
 
   Widget _formPerfil() {
+    _carregaPerfil();
     return Form(
       key: _formKey,
 
